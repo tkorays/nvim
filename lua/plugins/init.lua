@@ -1,3 +1,3 @@
 
-require('plugins.easyjump')
+-- require('plugins.easyjump')
 

@@ -7,6 +7,7 @@ local opts = {
     -- backspace = 2,
 
     number = true,
+    relativenumber = true,
     autoindent = true,
     smartindent = true,
 

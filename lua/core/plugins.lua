@@ -84,6 +84,7 @@ plugins.setup = function()
 
         -- vim-smoothie is better than 'karb94/neoscroll.nvim'
         use 'psliwka/vim-smoothie'
+        use { 'tpope/vim-surround' }
 
         use {
             'romgrk/barbar.nvim',
@@ -136,6 +137,7 @@ plugins.setup = function()
                     close_on_exit = true, -- close the terminal window when the process exits
                     shell = vim.o.shell, -- change the default shell
                 }
+
             end
         }
 
@@ -186,27 +188,42 @@ plugins.setup = function()
                         },
                     }
                 }
+                local no_preview = function()
+                    return require('telescope.themes').get_dropdown({
+                        borderchars = {
+                            { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                            prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                            results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+                            preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                        },
+                        layout_config = {
+                            width = 0.95,
+                            height = 0.5,
+                        },
+                        show_line = true,
+                        fname_width = 70,
+                        previewer = false,
+                        prompt_title = false
+                    })
+                end
 
                 -- key binding
-                -- `ff` for find files
-                -- `fg` for find by grep
-                -- `fb` for find buffers
-                -- `fs` for find symbols in current buffer 
-                -- `fh` for find help tags
-                -- `fr` for open recent finding
-                vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', {})
-                vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope grep_string<CR>', {})
-                vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', {})
-                vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<CR>', {})
-                vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', {})
-                vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>Telescope resume<CR>', {})
-                vim.api.nvim_set_keymap('n', '<leader>fm', '<cmd>Telescope marks<CR>', {})
+                vim.keymap.set('n', '<leader>s', function() require"telescope.builtin".find_files(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fb', function() require"telescope.builtin".buffers(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fs', function() require"telescope.builtin".lsp_document_symbols(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fh', function() require"telescope.builtin".help_tags(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fo', function() require"telescope.builtin".resume(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fm', function() require"telescope.builtin".marks(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fi', function() require"telescope.builtin".lsp_implementations(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fr', function() require"telescope.builtin".lsp_references(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fc', function() require"telescope.builtin".lsp_incoming_calls(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fC', function() require"telescope.builtin".lsp_outgoing_calls(no_preview()) end, {})
             end
         }
 
         use {'tpope/vim-fugitive', config = function()
             -- `ob` for open git blame sidebar
-            vim.api.nvim_set_keymap('n', '<leader>ob', '<cmd>Git blame<CR>', {})
+            vim.api.nvim_set_keymap('n', '<leader>gb', '<cmd>Git blame<CR>', {})
         end}
         use {'airblade/vim-gitgutter', config = function()
             vim.cmd [[autocmd BufWritePost * GitGutter]]
@@ -243,6 +260,7 @@ plugins.setup = function()
         end}
 
         use 'morhetz/gruvbox'
+        use "EdenEast/nightfox.nvim"
         use 'puremourning/vimspector'
         use 'alepez/vim-gtest'
 
@@ -253,14 +271,17 @@ plugins.setup = function()
             config = function()
                 local util = require "lspconfig/util"
                 local lspconfig = require('lspconfig')
-                lspconfig.ccls.setup {
-                    init_options = {
-                        cache = {
-                            directory = '/tmp/ccls/cache',
-                        },
-                        highlight = { lsRanges = true },
-                    }
+                lspconfig.clangd.setup {
                 }
+                vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>ClangdSwitchSourceHeader<CR>', {})
+                -- lspconfig.ccls.setup {
+                --     init_options = {
+                --         cache = {
+                --             directory = '.ccls-cache',
+                --         },
+                --         highlight = { lsRanges = true },
+                --     }
+                -- }
                 lspconfig.gopls.setup {
                     cmd = {'gopls', 'serve'},
                     filetypes = {'go', 'gomod'},
@@ -303,20 +324,30 @@ plugins.setup = function()
                 vim.diagnostic.config ({
                     virtual_text = false
                 })
-                vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', '<leader>gn', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', '<leader>gp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', {silent = true})
-                vim.api.nvim_set_keymap('n', '<leader>ge', '<cmd>lua vim.diagnostic.open_float()<cr>', {silent = true})
+                local opts = { noremap=true, silent=true }
+                local bufopts = { noremap=true, silent=true, buffer=bufnr }
+                vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+                vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+                -- use telescope to search references and implementations
+                -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+                vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
+                vim.keymap.set('n', '<leader>gn', vim.lsp.diagnostic.goto_next, opts)
+                vim.keymap.set('n', '<leader>gp', vim.lsp.diagnostic.goto_prev, opts)
+                vim.keymap.set('n', '<leader>ge', vim.diagnostic.open_float, opts)
+                vim.keymap.set('n', '<leader>gq', vim.diagnostic.setloclist, opts)
+                vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+                vim.keymap.set('n', '<leader>xf', vim.lsp.buf.formatting, opts)
+                vim.keymap.set('n', '<leader>xa', vim.lsp.buf.add_workspace_folder, opts)
+                vim.keymap.set('n', '<leader>xr', vim.lsp.buf.remove_workspace_folder, opts)
             end
         }
 
         use {'dense-analysis/ale', config = function()
             vim.g['ale_cpp_ccls_init_options'] = {
-                cacheDirectory = '/tmp/ccls/cache',
+                cacheDirectory = '.ccls-cache',
                 cacheFormat = 'binary',
                 diagnostics = {
                     onOpen = 0,
@@ -340,10 +371,10 @@ plugins.setup = function()
                 cpp = {'clang-format'}
             }
             vim.g['ale_completion_enabled'] = false
-            vim.g['ale_sign_error'] = '✗'
-            vim.g['ale_sign_warning'] = '⚠'
             vim.g['ale_cpp_clangd_executable'] = 'clangd'
 
+            vim.g.ale_sign_error = '✗'
+            vim.g.ale_sign_warning = '⚠'
             vim.api.nvim_set_keymap('n', '<leader>xl', ':ALELint<CR>', {silent = true})
             vim.api.nvim_set_keymap('n', '<leader>gd', ':ALEDetail<CR>', {silent = true})
         end}
@@ -421,23 +452,6 @@ plugins.setup = function()
         end}
 
         use 'godlygeek/tabular'
-
-        use { 'nvim-neorg/neorg', after = 'nvim-treesitter', config = function()
-            require('neorg').setup {
-                load = {
-                    ['core.defaults'] = {},
-                    ['core.norg.dirman'] = {
-                        config = {
-                            workspaces = {
-                                work = '~/notes/work',
-                                home = '~/notes/home',
-                            }
-                        }
-                    }
-                }
-            }
-        end}
-
     end)
 end
 
