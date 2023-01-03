@@ -49,6 +49,8 @@ vim.cmd [[filetype plugin on]]
 vim.cmd [[highlight clear LineNr]]
 vim.cmd [[highlight clear SignColumn]]
 vim.cmd [[set colorcolumn=120]]
+-- install win32yank for windows
+vim.cmd [[set clipboard+=unnamedplus]]
 
 vim.cmd("let mapleader = ' '")
 -- navigate in windows

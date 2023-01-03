@@ -52,6 +52,7 @@ plugins.setup = function()
                 }
                 -- register `te` for toggle nvim-tree
                 vim.api.nvim_set_keymap('n', '<leader>te', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+                vim.api.nvim_set_keymap('n', '<leader>gc', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
             end
         }
 
@@ -209,6 +210,7 @@ plugins.setup = function()
 
                 -- key binding
                 vim.keymap.set('n', '<leader>s', function() require"telescope.builtin".find_files(no_preview()) end, {})
+                vim.keymap.set('n', '<leader>fg', function() require"telescope.builtin".grep_string(no_preview()) end, {})
                 vim.keymap.set('n', '<leader>fb', function() require"telescope.builtin".buffers(no_preview()) end, {})
                 vim.keymap.set('n', '<leader>fs', function() require"telescope.builtin".lsp_document_symbols(no_preview()) end, {})
                 vim.keymap.set('n', '<leader>fh', function() require"telescope.builtin".help_tags(no_preview()) end, {})
@@ -269,7 +271,7 @@ plugins.setup = function()
         use {
             'neovim/nvim-lspconfig',
             config = function()
-                local util = require "lspconfig/util"
+                local util = require("lspconfig/util")
                 local lspconfig = require('lspconfig')
                 lspconfig.clangd.setup {
                 }
@@ -324,18 +326,18 @@ plugins.setup = function()
                 vim.diagnostic.config ({
                     virtual_text = false
                 })
+                -- use telescope to search references and implementations
+                -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
                 local opts = { noremap=true, silent=true }
-                local bufopts = { noremap=true, silent=true, buffer=bufnr }
+                -- local bufopts = { noremap=true, silent=true, buffer=bufnr }
                 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
                 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
                 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
                 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-                -- use telescope to search references and implementations
-                -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-                -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
                 vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
-                vim.keymap.set('n', '<leader>gn', vim.lsp.diagnostic.goto_next, opts)
-                vim.keymap.set('n', '<leader>gp', vim.lsp.diagnostic.goto_prev, opts)
+                -- vim.keymap.set('n', '<leader>gn', vim.lsp.diagnostic.goto_next, opts)
+                -- vim.keymap.set('n', '<leader>gp', vim.lsp.diagnostic.goto_prev, opts)
                 vim.keymap.set('n', '<leader>ge', vim.diagnostic.open_float, opts)
                 vim.keymap.set('n', '<leader>gq', vim.diagnostic.setloclist, opts)
                 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
