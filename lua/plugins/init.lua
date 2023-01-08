@@ -34,13 +34,18 @@ packer.startup(function()
         }
     end}
 
-    use { 
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        requires = {'kyazdani42/nvim-web-devicons', opt = false},
-        config = function()
-            require('plugins.bubbles')
-        end
+    -- use {
+    --     'glepnir/galaxyline.nvim',
+    --     branch = 'main',
+    --     requires = {'kyazdani42/nvim-web-devicons', opt = false},
+    --     config = function()
+    --         require('plugins.bubbles')
+    --     end
+    -- }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        config = require('plugins.lualine')
     }
 
     use {
