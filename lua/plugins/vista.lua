@@ -3,11 +3,12 @@ return function()
     vim.g.vista_default_executive = 'ctags'
     vim.g.vista_executive_for = {
         cpp = 'nvim_lsp',
+        python = 'nvim_lsp',
         vimwiki = 'toc',
         pandoc = 'toc',
         markdown = 'toc'
     }
-    vim.g.vista_sidebar_position = "vertical topleft"
+    vim.g.vista_sidebar_position = "vertical botright"
     vim.g.vista_sidebar_width = 36
     vim.g.vista_disable_statusline = true
     vim.g.vista_enable_markdown_extension = true
