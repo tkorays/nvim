@@ -29,7 +29,7 @@ return function()
     }
 
     local on_attach = function(client)
-        require'completion'.on_attach(client)
+        -- require'completion'.on_attach(client)
     end
     lspconfig.rust_analyzer.setup {
         on_attach=on_attach,
@@ -69,7 +69,7 @@ return function()
     vim.keymap.set('n', '<leader>ge', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '<leader>gq', vim.diagnostic.setloclist, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>xf', vim.lsp.buf.formatting, opts)
+    vim.keymap.set('n', '<leader>xf', vim.lsp.buf.format, opts)
     vim.keymap.set('n', '<leader>xa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<leader>xr', vim.lsp.buf.remove_workspace_folder, opts)
 end
