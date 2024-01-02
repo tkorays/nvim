@@ -1,144 +1,138 @@
-
-packer.startup(function()
-    use 'wbthomason/packer.nvim'
+require("lazy").setup({
 
     -- ui 
     ----------------------------------------------------------------
-    use {
+    {
         'kyazdani42/nvim-tree.lua',
-        requires = {
+        dependencies = {
             'kyazdani42/nvim-web-devicons',
         },
         tag = 'nightly',
         config = require('plugins.nvim-tree')
-    }
+    },
 
-    use {"liuchengxu/vista.vim", config = require('plugins.vista') }
+    {"liuchengxu/vista.vim", config = require('plugins.vista') },
 
-    use {'gelguy/wilder.nvim', config = require('plugins.wilder')}
+    {'gelguy/wilder.nvim', config = require('plugins.wilder')},
 
-    use {
+    {
         'romgrk/barbar.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        dependencies = {'kyazdani42/nvim-web-devicons'},
         config = require('plugins.barbar')
-    }
+    },
 
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        dependencies = {'kyazdani42/nvim-web-devicons'},
         config = require('plugins.lualine')
-    }
+    },
 
-    use {'akinsho/toggleterm.nvim', config = require('plugins.toggleterm')}
+    {'akinsho/toggleterm.nvim', config = require('plugins.toggleterm')},
 
-    use {
+    {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
         config = require('plugins.telescope') 
-    }
+    },
     ----------------------------------------------------------------
-
-
+ 
     -- theme
     ----------------------------------------------------------------
-    use 'morhetz/gruvbox'
+    {'morhetz/gruvbox', config = function() vim.cmd [[colorscheme gruvbox]] end},
 
-    use "EdenEast/nightfox.nvim"
+    "EdenEast/nightfox.nvim",
     ----------------------------------------------------------------
-
 
     -- editor tools
     ----------------------------------------------------------------
     -- vim-smoothie is better than 'karb94/neoscroll.nvim'
-    use 'psliwka/vim-smoothie'
+    'psliwka/vim-smoothie',
 
-    use 'tpope/vim-surround'
+    'tpope/vim-surround',
 
     -- use {'jiangmiao/auto-pairs', config = require('plugins.auto-pairs')}
 
-    use {'preservim/nerdcommenter', config = require('plugins.nerdcommenter')}
+    {'preservim/nerdcommenter', config = require('plugins.nerdcommenter')},
 
-    use 'mg979/vim-visual-multi'
+    'mg979/vim-visual-multi',
 
-    use {'junegunn/vim-easy-align', config = require('plugins.vim-easy-align')}
+    {'junegunn/vim-easy-align', config = require('plugins.vim-easy-align')},
 
-    use {'lfv89/vim-interestingwords', config = function()
+    {'lfv89/vim-interestingwords', config = function()
         vim.g['interestingWordsGUIColors'] = {
             '#aeee00', '#ff0000', '#0000ff', '#b88823', '#ffa724', '#ff2c4b',
             '#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF'
         }
-    end}
+    end},
     ----------------------------------------------------------------
-
-
+    
     -- git tools
     ----------------------------------------------------------------
-    use {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')}
+    {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')},
 
     -- use {'airblade/vim-gitgutter', config = require('plugins.vim-gitgutter')}
 
-    use { 'kdheepak/lazygit.nvim', config = require('plugins.lazygit')}
+    { 'kdheepak/lazygit.nvim', config = require('plugins.lazygit')},
     ----------------------------------------------------------------
 
 
     -- Language specific
     ----------------------------------------------------------------
-    use {'neovim/nvim-lspconfig', config = require('plugins.nvim-lspconfig')}
+    {'neovim/nvim-lspconfig', config = require('plugins.nvim-lspconfig')},
 
-    use {'dense-analysis/ale', config = require('plugins.ale')}
+    {'dense-analysis/ale', config = require('plugins.ale')},
 
-    use {'fatih/vim-go', run = ':GoUpdateBinaries', config = require('plugins.vim-go')}
+    {'fatih/vim-go', build = ':GoUpdateBinaries', config = require('plugins.vim-go')},
 
-    use 'rust-lang/rust.vim'
+    'rust-lang/rust.vim',
 
-    use {'nvim-treesitter/nvim-treesitter', run = '<cmd>TSUpdate', config = require('plugins.nvim-treesitter')}
+    {'nvim-treesitter/nvim-treesitter', build = '<cmd>TSUpdate', config = require('plugins.nvim-treesitter')},
 
-    use 'puremourning/vimspector'
+    'puremourning/vimspector',
 
-    use 'alepez/vim-gtest'
+    'alepez/vim-gtest',
 
-    use {'Civitasv/cmake-tools.nvim', config=require('plugins.cmake-tools')}
+    {'Civitasv/cmake-tools.nvim', config=require('plugins.cmake-tools')},
     ----------------------------------------------------------------
-
 
     -- code complementation
     ----------------------------------------------------------------
-    use {'sirver/ultisnips', config = require('plugins.ultisnips')}
+    {'sirver/ultisnips', config = require('plugins.ultisnips')},
 
-    use 'honza/vim-snippets'
+    'honza/vim-snippets',
 
-    use 'hrsh7th/cmp-nvim-lsp'
+    'hrsh7th/cmp-nvim-lsp',
 
-    use 'hrsh7th/cmp-buffer'
+    'hrsh7th/cmp-buffer',
 
-    use 'hrsh7th/cmp-path'
+    'hrsh7th/cmp-path',
 
-    use 'hrsh7th/cmp-cmdline'
+    'hrsh7th/cmp-cmdline',
 
     -- for ultisnips
-    use 'quangnguyen30192/cmp-nvim-ultisnips'
+    'quangnguyen30192/cmp-nvim-ultisnips',
 
-    use {'hrsh7th/nvim-cmp', config = require('plugins.nvim-cmp')}
+    {'hrsh7th/nvim-cmp', config = require('plugins.nvim-cmp')},
     ----------------------------------------------------------------
 
 
     -- for markdown
     ----------------------------------------------------------------
-    use {'ekickx/clipboard-image.nvim', config = require('plugins.clipboard-image')}
+    {'ekickx/clipboard-image.nvim', config = require('plugins.clipboard-image')},
 
-    use {'plasticboy/vim-markdown'}
+    {'plasticboy/vim-markdown'},
 
-    use 'godlygeek/tabular'
+    'godlygeek/tabular',
 
-    use {
+    {
         "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
+        build = function() vim.fn["mkdp#util#install"]() end,
         config = require('plugins.markdown-preview')
-    }
+    },
     ----------------------------------------------------------------
-end)
+})
 
--- use {
+-- {
 --     'glepnir/galaxyline.nvim',
 --     branch = 'main',
 --     requires = {'kyazdani42/nvim-web-devicons', opt = false},
