@@ -95,6 +95,19 @@ require("lazy").setup({
     'alepez/vim-gtest',
 
     {'Civitasv/cmake-tools.nvim', config=require('plugins.cmake-tools')},
+
+    -- {
+    --     "nvim-neotest/neotest",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "antoinemadec/FixCursorHold.nvim",
+    --         "nvim-treesitter/nvim-treesitter",
+    --         "alfaix/neotest-gtest",
+    --         "nvim-neotest/neotest-go",
+    --     },
+    --     config = require("plugins.neotest"),
+    --     lazy = true
+    -- },
     ----------------------------------------------------------------
 
     -- code complementation
