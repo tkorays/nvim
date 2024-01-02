@@ -54,7 +54,7 @@ packer.startup(function()
 
     use 'tpope/vim-surround'
 
-    use {'jiangmiao/auto-pairs', config = require('plugins.auto-pairs')}
+    -- use {'jiangmiao/auto-pairs', config = require('plugins.auto-pairs')}
 
     use {'preservim/nerdcommenter', config = require('plugins.nerdcommenter')}
 
@@ -75,7 +75,7 @@ packer.startup(function()
     ----------------------------------------------------------------
     use {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')}
 
-    use {'airblade/vim-gitgutter', config = require('plugins.vim-gitgutter')}
+    -- use {'airblade/vim-gitgutter', config = require('plugins.vim-gitgutter')}
 
     use { 'kdheepak/lazygit.nvim', config = require('plugins.lazygit')}
     ----------------------------------------------------------------
@@ -96,6 +96,8 @@ packer.startup(function()
     use 'puremourning/vimspector'
 
     use 'alepez/vim-gtest'
+
+    use {'Civitasv/cmake-tools.nvim', config=require('plugins.cmake-tools')}
     ----------------------------------------------------------------
 
 
