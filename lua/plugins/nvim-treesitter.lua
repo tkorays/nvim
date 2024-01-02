@@ -1,7 +1,7 @@
 return function()
     require('nvim-treesitter.configs').setup {
         ensure_installed = {
-            'bash', 'c', 'cpp', 'go', 'python', 'rust', 'vim', 'json', 'lua', 'norg'
+            'bash', 'c', 'cpp', 'go', 'python', 'rust', 'vim', 'json', 'lua', 'norg', 'vimdoc'
         },
         highlight = {
             enable = true,

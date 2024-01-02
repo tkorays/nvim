@@ -13,7 +13,7 @@ require("lazy").setup({
 
     {"liuchengxu/vista.vim", config = require('plugins.vista') },
 
-    {'gelguy/wilder.nvim', config = require('plugins.wilder')},
+    {'gelguy/wilder.nvim', build = ':UpdateRemotePlugins', config = require('plugins.wilder')},
 
     {
         'romgrk/barbar.nvim',
@@ -71,6 +71,8 @@ require("lazy").setup({
     {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')},
 
     -- use {'airblade/vim-gitgutter', config = require('plugins.vim-gitgutter')}
+
+    { "lewis6991/gitsigns.nvim", config = require("plugins.gitsigns") },
 
     { 'kdheepak/lazygit.nvim', config = require('plugins.lazygit')},
     ----------------------------------------------------------------
