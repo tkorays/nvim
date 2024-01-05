@@ -5,7 +5,7 @@ require("lazy").setup({
     {
         'kyazdani42/nvim-tree.lua',
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         },
         tag = 'nightly',
         config = require('plugins.nvim-tree')
@@ -17,13 +17,13 @@ require("lazy").setup({
 
     {
         'romgrk/barbar.nvim',
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        dependencies = {'nvim-tree/nvim-web-devicons'},
         config = require('plugins.barbar')
     },
 
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        dependencies = {'nvim-tree/nvim-web-devicons'},
         config = require('plugins.lualine')
     },
 
@@ -33,6 +33,9 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
         config = require('plugins.telescope') 
+    },
+    {
+        'rcarriga/nvim-notify'
     },
     ----------------------------------------------------------------
  
@@ -95,6 +98,13 @@ require("lazy").setup({
     'alepez/vim-gtest',
 
     {'Civitasv/cmake-tools.nvim', config=require('plugins.cmake-tools')},
+    {
+        "williamboman/mason.nvim", config = function() require("mason").setup() end
+    },
+    {
+        "williamboman/mason-lspconfig.nvim", config = function() require("mason-lspconfig").setup() end
+
+    },
 
     -- {
     --     "nvim-neotest/neotest",

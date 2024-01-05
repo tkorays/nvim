@@ -3,6 +3,7 @@ return function()
     local lspconfig = require('lspconfig')
     lspconfig.clangd.setup {
     }
+    lspconfig.lua_ls.setup {}
     vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>ClangdSwitchSourceHeader<CR>', {})
     -- lspconfig.ccls.setup {
     --     init_options = {
