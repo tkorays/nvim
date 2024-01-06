@@ -62,6 +62,8 @@ return function()
             r = {function() ts.lsp_references(no_preview()) end, "LSP reference"},
             c = {function() ts.lsp_incoming_calls(no_preview()) end, "imcoming calls"},
             C = {function() ts.lsp_outgoing_calls(no_preview()) end, "outgong calls"},
+            d = {function() ts.diagnostics({bufnr=0}) end, "diagnostic"},
+            t = {function() ts.treesitter() end, "treesitter"},
         }
     }, { prefix = "<leader>" })
 end
