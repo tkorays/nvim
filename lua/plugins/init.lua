@@ -32,13 +32,22 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
-        config = require('plugins.telescope') 
+        config = require('plugins.telescope')
     },
     {
         'rcarriga/nvim-notify'
     },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
+    },
     ----------------------------------------------------------------
- 
+
     -- theme
     ----------------------------------------------------------------
     {'morhetz/gruvbox', config = function() vim.cmd [[colorscheme gruvbox]] end},
@@ -68,7 +77,7 @@ require("lazy").setup({
         }
     end},
     ----------------------------------------------------------------
-    
+
     -- git tools
     ----------------------------------------------------------------
     {'tpope/vim-fugitive', config = require('plugins.vim-fugitive')},

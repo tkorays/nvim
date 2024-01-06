@@ -4,7 +4,14 @@ return function()
     lspconfig.clangd.setup {
     }
     lspconfig.lua_ls.setup {}
-    vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>ClangdSwitchSourceHeader<CR>', {})
+    -- vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>ClangdSwitchSourceHeader<CR>', {})
+    require("which-key").register({
+        x = {
+            name = "Execute",
+            s = {"<cmd>ClangdSwitchSourceHeader<cr>", "Switch source header"}
+        }
+    }, { prefix="<leader>" })
+
     -- lspconfig.ccls.setup {
     --     init_options = {
     --         cache = {
@@ -55,22 +62,23 @@ return function()
     vim.diagnostic.config ({
         virtual_text = false
     })
-    -- use telescope to search references and implementations
-    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+
     local opts = { noremap=true, silent=true }
-    -- local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
-    -- vim.keymap.set('n', '<leader>gn', vim.lsp.diagnostic.goto_next, opts)
-    -- vim.keymap.set('n', '<leader>gp', vim.lsp.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', '<leader>ge', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<leader>gq', vim.diagnostic.setloclist, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>xf', vim.lsp.buf.format, opts)
-    vim.keymap.set('n', '<leader>xa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<leader>xr', vim.lsp.buf.remove_workspace_folder, opts)
+    require("which-key").register({
+        s = {
+            name = "LSP",
+            o = {function() vim.diagnostic.open_float(opts) end, "Open float"},
+            l = {function() vim.diagnostic.setloclist(opts) end, "Open Local List"},
+            a = {function() vim.diagnostic.add_workspace_folder(opts) end, "add_workspace_folder"},
+            A = {function() vim.diagnostic.remove_workspace_folder(opts) end, "remove_workspace_folder"},
+            ["["] = {function() vim.diagnostic.goto_prev(opts) end, "prev diagnostic error"},
+            ["]"] = {function() vim.diagnostic.goto_next(opts) end, "next diagnostic error"},
+            d = {function() vim.lsp.buf.definition(opts) end, "goto definition"},
+            D = {function() vim.lsp.buf.declaration(opts) end, "goto declaration"},
+            h = {function() vim.lsp.buf.hover(opts) end, "hover"},
+            r = {function() vim.lsp.buf.rename() end, "rename symboles"},
+            f = {function() vim.lsp.buf.format() end, "format"},
+            -- use telescope to search references, symbols and implementations
+        }
+    }, { prefix="<leader>" })
 end
