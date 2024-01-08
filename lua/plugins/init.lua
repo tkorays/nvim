@@ -62,8 +62,11 @@ require("lazy").setup({
 
     'tpope/vim-surround',
 
-    -- use {'jiangmiao/auto-pairs', config = require('plugins.auto-pairs')}
-
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
     {'preservim/nerdcommenter', config = require('plugins.nerdcommenter')},
 
     'mg979/vim-visual-multi',
@@ -113,6 +116,12 @@ require("lazy").setup({
     {
         "williamboman/mason-lspconfig.nvim", config = function() require("mason-lspconfig").setup() end
 
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+        },
     },
 
     -- {
