@@ -123,7 +123,7 @@ require("lazy").setup({
         opts = {
         },
     },
-
+    { "folke/neodev.nvim", opts = {}, config = require('plugins.neodev')},
     -- {
     --     "nvim-neotest/neotest",
     --     dependencies = {

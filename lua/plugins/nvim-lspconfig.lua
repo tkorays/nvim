@@ -3,7 +3,7 @@ return function()
     local lspconfig = require('lspconfig')
     lspconfig.clangd.setup {
     }
-    lspconfig.lua_ls.setup {}
+    -- lspconfig.lua_ls.setup {}
     -- vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>ClangdSwitchSourceHeader<CR>', {})
     require("which-key").register({
         x = {
@@ -75,7 +75,7 @@ return function()
             ["]"] = {function() vim.diagnostic.goto_next(opts) end, "next diagnostic error"},
             d = {function() vim.lsp.buf.definition(opts) end, "goto definition"},
             D = {function() vim.lsp.buf.declaration(opts) end, "goto declaration"},
-            h = {function() vim.lsp.buf.hover(opts) end, "hover"},
+            h = {function() vim.lsp.buf.hover() end, "hover"},
             r = {function() vim.lsp.buf.rename() end, "rename symboles"},
             f = {function() vim.lsp.buf.format() end, "format"},
             -- use telescope to search references, symbols and implementations
