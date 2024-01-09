@@ -78,6 +78,10 @@ require("lazy").setup({
             '#aeee00', '#ff0000', '#0000ff', '#b88823', '#ffa724', '#ff2c4b',
             '#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF'
         }
+        vim.g['interestingWordsTermColors'] = {
+            '#aeee00', '#ff0000', '#0000ff', '#b88823', '#ffa724', '#ff2c4b',
+            '#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF'
+        }
     end},
     ----------------------------------------------------------------
 
