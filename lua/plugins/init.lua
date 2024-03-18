@@ -8,31 +8,48 @@ require("lazy").setup({
             'nvim-tree/nvim-web-devicons',
         },
         tag = 'nightly',
-        config = require('plugins.nvim-tree')
+        config = require('plugins.nvim-tree'),
+        cond = not vim.g.vscode
     },
 
-    {"liuchengxu/vista.vim", config = require('plugins.vista') },
+    {
+        "liuchengxu/vista.vim",
+        config = require('plugins.vista'),
+        cond = not vim.g.vscode
+    },
 
-    {'gelguy/wilder.nvim', build = ':UpdateRemotePlugins', config = require('plugins.wilder')},
+    {
+        'gelguy/wilder.nvim',
+        build = ':UpdateRemotePlugins',
+        config = require('plugins.wilder'),
+        cond = not vim.g.vscode
+    },
 
     {
         'romgrk/barbar.nvim',
         dependencies = {'nvim-tree/nvim-web-devicons'},
-        config = require('plugins.barbar')
+        config = require('plugins.barbar'),
+        cond = not vim.g.vscode
     },
 
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {'nvim-tree/nvim-web-devicons'},
-        config = require('plugins.lualine')
+        config = require('plugins.lualine'),
+        cond = not vim.g.vscode
     },
 
-    {'akinsho/toggleterm.nvim', config = require('plugins.toggleterm')},
+    {
+        'akinsho/toggleterm.nvim',
+        config = require('plugins.toggleterm'),
+        cond = not vim.g.vscode
+    },
 
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
-        config = require('plugins.telescope')
+        config = require('plugins.telescope'),
+        cond = not vim.g.vscode
     },
     {
         'rcarriga/nvim-notify'
@@ -93,7 +110,11 @@ require("lazy").setup({
 
     { "lewis6991/gitsigns.nvim", config = require("plugins.gitsigns") },
 
-    { 'kdheepak/lazygit.nvim', config = require('plugins.lazygit')},
+    {
+        'kdheepak/lazygit.nvim',
+        config = require('plugins.lazygit'),
+        cond = not vim.g.vscode
+    },
     ----------------------------------------------------------------
 
 
@@ -113,7 +134,11 @@ require("lazy").setup({
 
     'alepez/vim-gtest',
 
-    {'Civitasv/cmake-tools.nvim', config=require('plugins.cmake-tools')},
+    {
+        'Civitasv/cmake-tools.nvim',
+        config=require('plugins.cmake-tools'),
+        cond = not vim.g.vscode
+    },
     {
         "williamboman/mason.nvim", config = function() require("mason").setup() end
     },
