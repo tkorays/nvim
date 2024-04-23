@@ -1,5 +1,6 @@
 return function()
     local telescope = require('telescope')
+    local telescope_pickers = require('plugins.telescope-pickers')
     telescope.setup {
         defaults = {
             -- layout_strategy = 'cursor',
@@ -22,7 +23,7 @@ return function()
         pickers = {
             -- use fd to find file
             find_files = {
-                find_command = { "fd", "-g" , "--ignore-case", "--type", "f" }
+                find_command = { "fd" , "--ignore-case", "--type", "file" }
             },
         }
     }
@@ -50,7 +51,8 @@ return function()
     require("which-key").register({
         f = {
             name = "Telescope keymaps",
-            f = {function() ts.find_files(no_preview()) end, "Find files"},
+            -- f = {function() ts.find_files(no_preview()) end, "Find files"},
+            f = {function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, "Find files"},
             g = {function() ts.grep_string(no_preview()) end, "Grep string"},
             b = {function() ts.buffers(no_preview()) end, "Show buffers"},
             s = {function() ts.lsp_document_symbols(no_preview()) end, "document Symbols"},
@@ -66,4 +68,8 @@ return function()
             t = {function() ts.treesitter() end, "treesitter"},
         }
     }, { prefix = "<leader>" })
+
+
+    -- load extensions
+    telescope.load_extension("cmake_tools")
 end
