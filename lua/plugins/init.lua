@@ -46,11 +46,31 @@ require("lazy").setup({
     },
 
     {
+        -- ui hooks for vim.ui.select and vim.ui.input
+        'stevearc/dressing.nvim',
+    },
+
+    {
+        'nvim-telescope/telescope-ui-select.nvim'
+    },
+
+    {
         'nvim-telescope/telescope.nvim',
-        dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
+        dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
         config = require('plugins.telescope'),
         cond = not vim.g.vscode
     },
+
+    {
+        'adoyle-h/telescope-extension-maker.nvim',
+        config = require('plugins.telescope-extension-maker')
+    },
+
+    {
+        "FeiyouG/commander.nvim",
+        config = require('plugins.commander')
+    },
+
     {
         'rcarriga/nvim-notify'
     },
@@ -202,6 +222,12 @@ require("lazy").setup({
         config = require('plugins.markdown-preview')
     },
     ----------------------------------------------------------------
+
+    -- extensions
+    {
+        -- use enter to select emoji and use `p` to paste this emoji
+        'xiyaowong/telescope-emoji.nvim',
+    }
 })
 
 -- {

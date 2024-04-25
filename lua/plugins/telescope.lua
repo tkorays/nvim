@@ -72,4 +72,7 @@ return function()
 
     -- load extensions
     telescope.load_extension("cmake_tools")
+    telescope.load_extension("emoji")
+    telescope.load_extension("ui-select")
+
 end
