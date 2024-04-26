@@ -1,7 +1,21 @@
 return function()
 
     local commander = require('commander')
-    commander.setup{}
+    commander.setup{
+        components = {
+            'DESC',
+            'KEYS',
+            'CMD',
+            'CAT'
+        },
+        sort_by = {
+            'DESC',
+            'KEYS',
+            'CMD',
+            'CAT'
+        },
+        prompt_title = 'Commander'
+    }
     commander.add {
         {
             desc = 'cmake-build',
@@ -48,6 +62,10 @@ return function()
             desc = 'git-toggle-current-line-blame',
             cmd = '<CMD>Gitsigns toggle_current_line_blame<CR>',
         },
+        {
+            desc = 'git-commits',
+            cmd = '<CMD>Telescope git_commits<CR>'
+        },
 
         {
             desc = 'markdown-preview',
@@ -62,10 +80,35 @@ return function()
             cmd = '<cmd>MarkdownPreviewToggle<cr>'
         },
 
-
         {
             desc = 'rename-symbol',
-            cmd = function() vim.lsp.buf.rename() end
+            cmd = '<leader>sr',
+            keys = { 'n', '<leader>sr' }
+        },
+
+        {
+            desc = 'show-buffers',
+            cmd = '<leader>fb',
+            keys = { 'n', '<leader>fb' }
+        },
+
+        {
+            desc = 'switch-colorscheme',
+            cmd = '<CMD>Telescope colorscheme<CR>'
+        },
+        {
+            desc = 'live-grep',
+            cmd = '<CMD>Telescope live_grep<CR>'
+        },
+        {
+            desc = 'workspace-symbols',
+            cmd = '<leader>fS',
+            keys = { 'n', '<leader>fS' },
+        },
+        {
+            desc = 'document-symbols',
+            cmd = '<leader>fs',
+            keys = { 'n', '<leader>fs' },
         }
     }
 
