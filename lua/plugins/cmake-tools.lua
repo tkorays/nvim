@@ -1,5 +1,6 @@
 return function() 
-    require("cmake-tools").setup {
+    local cmake = require('cmake-tools')
+    cmake.setup {
         cmake_command = "cmake", -- this is used to specify cmake command path
         ctest_command = "ctest", -- this is used to specify ctest command path
         cmake_regenerate_on_save = true, -- auto generate when save CMakeLists.txt
@@ -117,6 +118,7 @@ return function()
             refresh_rate_ms = 100, -- how often to iterate icons
         },
     }
+
 
 end
 

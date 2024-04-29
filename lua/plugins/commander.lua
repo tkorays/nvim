@@ -1,7 +1,7 @@
 return function()
 
     local commander = require('commander')
-    commander.setup{
+    commander.setup {
         components = {
             'DESC',
             'KEYS',
@@ -16,7 +16,8 @@ return function()
         },
         prompt_title = 'Commander'
     }
-    commander.add {
+
+    commander.add({
         {
             desc = 'cmake-build',
             cmd = '<CMD>CMakeBuild<CR>',
@@ -52,6 +53,10 @@ return function()
         {
             desc = 'cmake-clean',
             cmd = '<CMD>CMakeClean<CR>',
+        },
+        {
+            desc = 'cmake-gtest',
+            cmd = '<CMD>Telescope gtest<CR>',
         },
 
         {
@@ -110,7 +115,7 @@ return function()
             cmd = '<leader>fs',
             keys = { 'n', '<leader>fs' },
         }
-    }
+    }, {})
 
     require("which-key").register({
         f = {

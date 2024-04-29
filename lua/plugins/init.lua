@@ -63,7 +63,8 @@ require("lazy").setup({
 
     {
         'adoyle-h/telescope-extension-maker.nvim',
-        config = require('plugins.telescope-extension-maker')
+        config = require('plugins.telescope-extension-maker'),
+        dependencies = { 'alepez/vim-gtest', 'Civitasv/cmake-tools.nvim'}
     },
 
     {
@@ -157,7 +158,7 @@ require("lazy").setup({
     {
         'Civitasv/cmake-tools.nvim',
         config=require('plugins.cmake-tools'),
-        cond = not vim.g.vscode
+        cond = not vim.g.vscode,
     },
     {
         "williamboman/mason.nvim", config = function() require("mason").setup() end
