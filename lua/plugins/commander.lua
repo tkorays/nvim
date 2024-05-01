@@ -58,6 +58,22 @@ return function()
             desc = 'cmake-gtest',
             cmd = '<CMD>Telescope gtest<CR>',
         },
+        {
+            desc = 'cmake-open-executor',
+            cmd = '<CMD>CMakeOpenExecutor<CR>',
+        },
+        {
+            desc = 'cmake-close-executor',
+            cmd = '<CMD>CMakeCloseExecutor<CR>',
+        },
+        {
+            desc = 'cmake-open-runner',
+            cmd = '<CMD>CMakeOpenRunner<CR>',
+        },
+        {
+            desc = 'cmake-close-runner',
+            cmd = '<CMD>CMakeCloseRunner<CR>',
+        },
 
         {
             desc = 'git-blame',
@@ -114,7 +130,32 @@ return function()
             desc = 'document-symbols',
             cmd = '<leader>fs',
             keys = { 'n', '<leader>fs' },
-        }
+        },
+        {
+            desc = 'toggle-terminal',
+            cmd = '<CMD>ToggleTerm<CR>',
+        },
+
+        {
+            desc = 'lsp-info',
+            cmd = '<CMD>LspInfo<CR>',
+        },
+        {
+            desc = 'lsp-start',
+            cmd = '<CMD>LspStart<CR>',
+        },
+        {
+            desc = 'lsp-stop',
+            cmd = '<CMD>LspStop<CR>',
+        },
+        {
+            desc = 'lsp-restart',
+            cmd = '<CMD>LspRestart<CR>',
+        },
+        {
+            desc = 'lsp-log',
+            cmd = '<CMD>LspLog<CR>',
+        },
     }, {})
 
     require("which-key").register({

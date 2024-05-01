@@ -1,10 +1,18 @@
 return function()
     local util = require("lspconfig/util")
     local lspconfig = require('lspconfig')
+
+
+    -- config LSP for C/C++ with `clangd`
     lspconfig.clangd.setup {
+        root_dir = util.root_pattern('.clang-format',
+                                     '.clang-tidy',
+                                     'compile_commands.json',
+                                     '.git'),
     }
+
     -- lspconfig.lua_ls.setup {}
-    -- vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>ClangdSwitchSourceHeader<CR>', {})
+
     require("which-key").register({
         x = {
             name = "Execute",
@@ -20,6 +28,7 @@ return function()
     --         highlight = { lsRanges = true },
     --     }
     -- }
+
     lspconfig.gopls.setup {
         cmd = {'gopls', 'serve'},
         filetypes = {'go', 'gomod'},
@@ -33,6 +42,7 @@ return function()
             },
         },
     }
+
     lspconfig.pyright.setup{
     }
 
