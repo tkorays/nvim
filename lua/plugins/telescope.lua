@@ -74,5 +74,6 @@ return function()
     telescope.load_extension("cmake_tools")
     telescope.load_extension("emoji")
     telescope.load_extension("ui-select")
+    telescope.load_extension("recent_files")
 
 end

@@ -7,7 +7,7 @@ require("lazy").setup({
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
-        tag = 'nightly',
+        -- tag = 'nightly',
         config = require('plugins.nvim-tree'),
         cond = not vim.g.vscode
     },
@@ -44,6 +44,11 @@ require("lazy").setup({
         config = require('plugins.toggleterm'),
         cond = not vim.g.vscode
     },
+    {
+        'stevearc/overseer.nvim',
+        opts = {},
+        config = require("plugins.overseer")
+    },
 
     {
         -- ui hooks for vim.ui.select and vim.ui.input
@@ -66,6 +71,7 @@ require("lazy").setup({
         config = require('plugins.telescope-extension-maker'),
         dependencies = { 'alepez/vim-gtest', 'Civitasv/cmake-tools.nvim'}
     },
+    { "smartpde/telescope-recent-files" },
 
     {
         "FeiyouG/commander.nvim",
@@ -174,18 +180,19 @@ require("lazy").setup({
         },
     },
     { "folke/neodev.nvim", opts = {}, config = require('plugins.neodev')},
-    -- {
-    --     "nvim-neotest/neotest",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "antoinemadec/FixCursorHold.nvim",
-    --         "nvim-treesitter/nvim-treesitter",
-    --         "alfaix/neotest-gtest",
-    --         "nvim-neotest/neotest-go",
-    --     },
-    --     config = require("plugins.neotest"),
-    --     lazy = true
-    -- },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "alfaix/neotest-gtest",
+            "nvim-neotest/neotest-go",
+        },
+        config = require("plugins.neotest"),
+        lazy = true
+    },
     ----------------------------------------------------------------
 
     -- code complementation

@@ -27,7 +27,7 @@ return function()
             console = "integratedTerminal",
         },
         cmake_executor = { -- executor to use
-            name = "quickfix", -- name of the executor
+            name = "toggleterm", -- name of the executor, quickfix/toggleterm
             opts = {}, -- the options the executor will get, possible values depend on the executor type. See `default_opts` for possible values.
             default_opts = { -- a list of default and possible values for executors
                 quickfix = {
@@ -71,7 +71,7 @@ return function()
             },
         },
         cmake_runner = { -- runner to use
-            name = "terminal", -- name of the runner
+            name = "toggleterm", -- name of the runner, terminal, toggleterm
             opts = {}, -- the options the runner will get, possible values depend on the runner type. See `default_opts` for possible values.
             default_opts = { -- a list of default and possible values for runners
                 quickfix = {

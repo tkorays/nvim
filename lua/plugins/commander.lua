@@ -122,6 +122,14 @@ return function()
             cmd = '<CMD>Telescope live_grep<CR>'
         },
         {
+            desc = 'emoji',
+            cmd = '<CMD>Telescope emoji<CR>'
+        },
+        {
+            desc = 'lazygit',
+            cmd = '<CMD>LazyGit<CR>'
+        },
+        {
             desc = 'workspace-symbols',
             cmd = '<leader>fS',
             keys = { 'n', '<leader>fS' },
@@ -155,6 +163,22 @@ return function()
         {
             desc = 'lsp-log',
             cmd = '<CMD>LspLog<CR>',
+        },
+        {
+            desc = 'open-recent',
+            cmd = function() require('telescope').extensions.recent_files.pick() end
+        },
+        {
+            desc = 'neotest-open-summary',
+            cmd = function()
+                require('neotest').summary.open()
+            end
+        },
+        {
+            desc = 'neotest-run-near',
+            cmd = function()
+                require('neotest').run.run()
+            end
         },
     }, {})
 

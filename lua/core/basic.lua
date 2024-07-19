@@ -17,7 +17,7 @@ local opts = {
     ruler = true,
     cursorline = true,
 
-    t_Co = 256,
+    -- t_Co = 256,
 
     expandtab = true,
     tabstop = 4,
@@ -25,7 +25,7 @@ local opts = {
     shiftwidth = 4,
     tags = './.tags,.tags',
     redrawtime = 10000,
-    colorcolumn = 120,
+    -- colorcolumn = 120,
 
     -- nobackup = true,
     -- nowritebackup = true,
