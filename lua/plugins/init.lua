@@ -61,7 +61,12 @@ require("lazy").setup({
 
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+        dependencies = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            'smartpde/telescope-recent-files',
+            "nvim-telescope/telescope-frecency.nvim",
+        },
         config = require('plugins.telescope'),
         cond = not vim.g.vscode
     },
@@ -71,8 +76,6 @@ require("lazy").setup({
         config = require('plugins.telescope-extension-maker'),
         dependencies = { 'alepez/vim-gtest', 'Civitasv/cmake-tools.nvim'}
     },
-    { "smartpde/telescope-recent-files" },
-
     {
         "FeiyouG/commander.nvim",
         config = require('plugins.commander')

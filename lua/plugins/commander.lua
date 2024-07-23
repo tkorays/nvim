@@ -175,6 +175,18 @@ return function()
             end
         },
         {
+            desc = 'neotest-close-summary',
+            cmd = function()
+                require('neotest').summary.close()
+            end
+        },
+        {
+            desc = 'neotest-toggle-summary',
+            cmd = function()
+                require('neotest').summary.toggle()
+            end
+        },
+        {
             desc = 'neotest-run-near',
             cmd = function()
                 require('neotest').run.run()
