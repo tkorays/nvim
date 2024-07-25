@@ -36,8 +36,8 @@ return function()
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
             },
             layout_config = {
-                width = 0.95,
-                height = 0.5,
+                width = 0.80,
+                height = 0.618,
             },
             show_line = true,
             fname_width = 70,
