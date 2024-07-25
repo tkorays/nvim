@@ -41,12 +41,10 @@ return function()
     -- register `te` for toggle nvim-tree
     -- vim.api.nvim_set_keymap('n', '<leader>te', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
     -- vim.api.nvim_set_keymap('n', '<leader>gc', ':NvimTreeFindFile<CR>', {noremap = true, silent = true})
-    require("which-key").register({
+    require("which-key").add({
+        { "<leader>t", group = "Nvim-Tree" },
+        { "<leader>tc", "<cmd>NvimTreeFindFile<cr>", desc = "show file in tree" },
+        { "<leader>te", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvim-tree" },
 
-        t = {
-            name = "Nvim-Tree",
-            e = {"<cmd>NvimTreeToggle<cr>", "Toggle nvim-tree"},
-            c = {"<cmd>NvimTreeFindFile<cr>", "show file in tree"}
-        }
-    }, { prefix="<leader>" })
+    })
 end

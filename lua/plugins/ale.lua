@@ -31,12 +31,10 @@ return function()
     vim.g.ale_sign_warning = '⚠'
     -- vim.api.nvim_set_keymap('n', '<leader>xl', ':ALELint<CR>', {silent = true})
     -- vim.api.nvim_set_keymap('n', '<leader>gd', ':ALEDetail<CR>', {silent = true})
-    require("which-key").register({
-        a = {
-            name = "ALE",
-            l = {"<cmd>ALELint<cr>", "Lint"},
-            d = {"<cmd>ALEDetail<cr>", "show details"},
-            f = {"<cmd>ALEFix<cr>", "Fix Lint"}
-        }
-    }, { prefix="<leader>" })
+    require("which-key").add({
+        { "<leader>a", group = "ALE" },
+        { "<leader>ad", "<cmd>ALEDetail<cr>", desc = "show details" },
+        { "<leader>af", "<cmd>ALEFix<cr>", desc = "Fix Lint" },
+        { "<leader>al", "<cmd>ALELint<cr>", desc = "Lint" },
+    })
 end

@@ -194,12 +194,10 @@ return function()
         },
     }, {})
 
-    require("which-key").register({
-        f = {
-            name = "Telescope keymaps",
-            a = { '<cmd>Telescope commander<CR>', 'Commander' }
-        }
-    }, { prefix = "<leader>" })
+    require("which-key").add({
+        { "<leader>f", group = "Telescope keymaps" },
+        { "<leader>fa", "<cmd>Telescope commander<CR>", desc = "Commander" },
+    })
 
 end
 

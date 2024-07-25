@@ -48,26 +48,24 @@ return function()
 
     -- key binding
     local ts = require("telescope.builtin")
-    require("which-key").register({
-        f = {
-            name = "Telescope keymaps",
+    require("which-key").add({
             -- f = {function() ts.find_files(no_preview()) end, "Find files"},
-            f = {function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, "Find files"},
-            g = {function() ts.grep_string(no_preview()) end, "Grep string"},
-            b = {function() ts.buffers(no_preview()) end, "Show buffers"},
-            s = {function() ts.lsp_document_symbols(no_preview()) end, "document Symbols"},
-            S = {function() ts.lsp_workspace_symbols(no_preview()) end, "Workspace Symbols"},
-            h = {function() ts.help_tags(no_preview()) end, "Help tags"},
-            o = {function() ts.resume(no_preview()) end, "resume"},
-            m = {function() ts.marks(no_preview()) end, "marks"},
-            i = {function() ts.lsp_implementations(no_preview()) end, "Implementations"},
-            r = {function() ts.lsp_references(no_preview()) end, "LSP reference"},
-            c = {function() ts.lsp_incoming_calls(no_preview()) end, "imcoming calls"},
-            C = {function() ts.lsp_outgoing_calls(no_preview()) end, "outgong calls"},
-            d = {function() ts.diagnostics({bufnr=0}) end, "diagnostic"},
-            t = {function() ts.treesitter() end, "treesitter"},
-        }
-    }, { prefix = "<leader>" })
+            { "<leader>f", group = "Telescope keymaps" },
+            {"<leader>ff", function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, desc="Find files"},
+            {"<leader>fg", function() ts.grep_string(no_preview()) end, desc="Grep string"},
+            {"<leader>fb", function() ts.buffers(no_preview()) end, desc="Show buffers"},
+            {"<leader>fs", function() ts.lsp_document_symbols(no_preview()) end, desc="document Symbols"},
+            {"<leader>fS", function() ts.lsp_workspace_symbols(no_preview()) end, desc="Workspace Symbols"},
+            {"<leader>fh", function() ts.help_tags(no_preview()) end, desc="Help tags"},
+            {"<leader>fo", function() ts.resume(no_preview()) end, desc="resume"},
+            {"<leader>fm", function() ts.marks(no_preview()) end, desc="marks"},
+            {"<leader>fi", function() ts.lsp_implementations(no_preview()) end, desc="Implementations"},
+            {"<leader>fr", function() ts.lsp_references(no_preview()) end, desc="LSP reference"},
+            {"<leader>fc", function() ts.lsp_incoming_calls(no_preview()) end, desc="imcoming calls"},
+            {"<leader>fC", function() ts.lsp_outgoing_calls(no_preview()) end, desc="outgong calls"},
+            {"<leader>fd", function() ts.diagnostics({bufnr=0}) end, desc="diagnostic"},
+            {"<leader>ft", function() ts.treesitter() end, desc="treesitter"},
+    })
 
 
     -- load extensions

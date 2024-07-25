@@ -12,13 +12,10 @@ return function()
     }
 
     -- lspconfig.lua_ls.setup {}
-
-    require("which-key").register({
-        x = {
-            name = "Execute",
-            s = {"<cmd>ClangdSwitchSourceHeader<cr>", "Switch source header"}
-        }
-    }, { prefix="<leader>" })
+    require("which-key").add({
+        { "<leader>x", group = "Execute" },
+        { "<leader>xs", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch source header" },
+    })
 
     -- lspconfig.ccls.setup {
     --     init_options = {
@@ -74,21 +71,18 @@ return function()
     })
 
     local opts = { noremap=true, silent=true }
-    require("which-key").register({
-        s = {
-            name = "LSP",
-            o = {function() vim.diagnostic.open_float(opts) end, "Open float"},
-            l = {function() vim.diagnostic.setloclist(opts) end, "Open Local List"},
-            a = {function() vim.diagnostic.add_workspace_folder(opts) end, "add_workspace_folder"},
-            A = {function() vim.diagnostic.remove_workspace_folder(opts) end, "remove_workspace_folder"},
-            ["["] = {function() vim.diagnostic.goto_prev(opts) end, "prev diagnostic error"},
-            ["]"] = {function() vim.diagnostic.goto_next(opts) end, "next diagnostic error"},
-            d = {function() vim.lsp.buf.definition(opts) end, "goto definition"},
-            D = {function() vim.lsp.buf.declaration(opts) end, "goto declaration"},
-            h = {function() vim.lsp.buf.hover() end, "hover"},
-            r = {function() vim.lsp.buf.rename() end, "rename symboles"},
-            f = {function() vim.lsp.buf.format() end, "format"},
-            -- use telescope to search references, symbols and implementations
-        }
-    }, { prefix="<leader>" })
+    require("which-key").add({
+        { "<leader>s", group = "LSP" },
+        { "<leader>sA", function() vim.diagnostic.remove_workspace_folder(opts) end, desc = "remove_workspace_folder" },
+        { "<leader>sD", function() vim.lsp.buf.declaration(opts) end, desc = "goto declaration" },
+        { "<leader>s[", function() vim.diagnostic.goto_prev(opts) end, desc = "prev diagnostic error" },
+        { "<leader>s]", function() vim.diagnostic.goto_next(opts) end, desc = "next diagnostic error" },
+        { "<leader>sa", function() vim.diagnostic.add_workspace_folder(opts) end, desc = "add_workspace_folder" },
+        { "<leader>sd", function() vim.lsp.buf.definition(opts) end, desc = "goto definition" },
+        { "<leader>sf", function() vim.lsp.buf.format() end, desc = "format" },
+        { "<leader>sh", function() vim.lsp.buf.hover() end, desc = "hover" },
+        { "<leader>sl", function() vim.diagnostic.setloclist(opts) end, desc = "Open Local List" },
+        { "<leader>so", function() vim.diagnostic.open_float(opts) end, desc = "Open float" },
+        { "<leader>sr", function() vim.lsp.buf.rename() end, desc = "rename symboles" },
+    })
 end
