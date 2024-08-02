@@ -196,6 +196,7 @@ require("lazy").setup({
         config = require("plugins.neotest"),
         lazy = true
     },
+    { "nvim-neotest/nvim-nio" },
     ----------------------------------------------------------------
 
     -- code complementation
