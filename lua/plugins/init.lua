@@ -97,7 +97,11 @@ require("lazy").setup({
 
     -- theme
     ----------------------------------------------------------------
-    {'morhetz/gruvbox', config = function() vim.cmd [[colorscheme gruvbox]] end},
+    {'morhetz/gruvbox', config = function()
+        vim.cmd [[colorscheme gruvbox]]
+        vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+        vim.cmd [[hi! NonText ctermbg=NONE guibg=NONE]]
+    end},
 
     "EdenEast/nightfox.nvim",
     ----------------------------------------------------------------

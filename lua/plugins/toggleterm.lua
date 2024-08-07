@@ -16,9 +16,20 @@ return function()
         start_in_insert = true,
         insert_mappings = false, -- whether or not the open mapping applies in insert mode
         persist_size = true,
-        direction = 'float',
+        direction = 'horizontal',
         close_on_exit = true, -- close the terminal window when the process exits
         shell = vim.o.shell, -- change the default shell
     }
+    local Terminal  = require('toggleterm.terminal').Terminal
+    if vim.fn.executable('ranger') == 1 then
+        local ranger = Terminal:new({
+            cmd = "ranger",
+            direction = "float",
+        })
+        function _ranger_toggle()
+            ranger:toggle()
+        end
+        vim.api.nvim_set_keymap('n', '<leader>rg', "<cmd>lua _ranger_toggle()<CR>", {noremap = true, silent = true})
+    end
 
 end

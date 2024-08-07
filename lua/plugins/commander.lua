@@ -165,6 +165,10 @@ return function()
             cmd = '<CMD>LspLog<CR>',
         },
         {
+            desc = 'code action',
+            cmd = function() vim.lsp.buf.code_action() end
+        },
+        {
             desc = 'open-recent',
             cmd = function() require('telescope').extensions.recent_files.pick() end
         },
@@ -192,6 +196,10 @@ return function()
                 require('neotest').run.run()
             end
         },
+        {
+            desc = 'current filename',
+            cmd = "<CMD>f<CR>"
+        }
     }, {})
 
     require("which-key").add({

@@ -80,6 +80,7 @@ return function()
         { "<leader>sa", function() vim.diagnostic.add_workspace_folder(opts) end, desc = "add_workspace_folder" },
         { "<leader>sd", function() vim.lsp.buf.definition(opts) end, desc = "goto definition" },
         { "<leader>sf", function() vim.lsp.buf.format() end, desc = "format" },
+        { "<leader>sc", function() vim.lsp.buf.code_action() end, desc = "code action" },
         { "<leader>sh", function() vim.lsp.buf.hover() end, desc = "hover" },
         { "<leader>sl", function() vim.diagnostic.setloclist(opts) end, desc = "Open Local List" },
         { "<leader>so", function() vim.diagnostic.open_float(opts) end, desc = "Open float" },
