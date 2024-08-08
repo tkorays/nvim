@@ -29,7 +29,17 @@ return function()
         function _ranger_toggle()
             ranger:toggle()
         end
-        vim.api.nvim_set_keymap('n', '<leader>rg', "<cmd>lua _ranger_toggle()<CR>", {noremap = true, silent = true})
+        vim.api.nvim_set_keymap('n', '<leader>tr', "<cmd>lua _ranger_toggle()<CR>", {noremap = true, silent = true})
+    end
+    if vim.fn.executable('spf') == 1 then
+        local spf = Terminal:new({
+            cmd = 'spf .',
+            direction = "float",
+        })
+        function _spf_toggle()
+            spf:toggle()
+        end
+        vim.api.nvim_set_keymap('n', '<leader>ts', "<cmd>lua _spf_toggle()<CR>", {noremap = true, silent = true})
     end
 
 end
