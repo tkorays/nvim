@@ -199,6 +199,18 @@ return function()
         {
             desc = 'current filename',
             cmd = "<CMD>f<CR>"
+        },
+        {
+            desc = 'trouble-diag-toggle',
+            cmd = '<CMD>Trouble diagnostics toggle<CR>'
+        },
+        {
+            desc = 'overseear-toggle',
+            cmd = '<CMD>OverseerToggle<CR>'
+        },
+        {
+            desc = 'overseear-run',
+            cmd = '<CMD>OverseerRun<CR>'
         }
     }, {})
 

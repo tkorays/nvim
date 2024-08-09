@@ -83,6 +83,7 @@ require("lazy").setup({
             { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         },
+        config = require('plugins.flash')
     },
 
     {
@@ -168,7 +169,14 @@ require("lazy").setup({
 
     -- Language specific
     ----------------------------------------------------------------
-    {'neovim/nvim-lspconfig', config = require('plugins.nvim-lspconfig')},
+    {
+        'neovim/nvim-lspconfig',
+        config = require('plugins.nvim-lspconfig'),
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig',
+        }
+    },
 
     {'dense-analysis/ale', config = require('plugins.ale')},
 
@@ -188,17 +196,10 @@ require("lazy").setup({
         cond = not vim.g.vscode,
     },
     {
-        "williamboman/mason.nvim", config = function() require("mason").setup() end
-    },
-    {
-        "williamboman/mason-lspconfig.nvim", config = function() require("mason-lspconfig").setup() end
-
-    },
-    {
         "folke/trouble.nvim",
+        opts = {},
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-        },
+        cmd = "Trouble",
     },
     { "folke/neodev.nvim", opts = {}, config = require('plugins.neodev')},
     {
@@ -210,6 +211,7 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
             "alfaix/neotest-gtest",
             "nvim-neotest/neotest-go",
+            "nvim-neotest/neotest-python",
         },
         config = require("plugins.neotest"),
         lazy = true
@@ -221,20 +223,23 @@ require("lazy").setup({
     ----------------------------------------------------------------
     {'sirver/ultisnips', config = require('plugins.ultisnips')},
 
-    'honza/vim-snippets',
 
-    'hrsh7th/cmp-nvim-lsp',
-
-    'hrsh7th/cmp-buffer',
-
-    'hrsh7th/cmp-path',
-
-    'hrsh7th/cmp-cmdline',
-
-    -- for ultisnips
-    'quangnguyen30192/cmp-nvim-ultisnips',
-
-    {'hrsh7th/nvim-cmp', config = require('plugins.nvim-cmp')},
+    {
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        config = require('plugins.nvim-cmp'),
+        dependencies = {
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            -- for ultisnips
+            'quangnguyen30192/cmp-nvim-ultisnips',
+            'honza/vim-snippets',
+        }
+    },
     ----------------------------------------------------------------
 
 

@@ -2,6 +2,15 @@ return function()
     local util = require("lspconfig/util")
     local lspconfig = require('lspconfig')
 
+    require('mason').setup()
+    require('mason-lspconfig').setup({
+        ensure_installed = {
+            'lua_ls',
+            'jsonls',
+            'pyright',
+        }
+    })
+
 
     -- config LSP for C/C++ with `clangd`
     lspconfig.clangd.setup {
