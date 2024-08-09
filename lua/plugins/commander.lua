@@ -227,6 +227,18 @@ return function()
         {
             desc = 'lspsage-code-action',
             cmd = '<CMD>Lspsaga code_action<CR>'
+        },
+        {
+            desc = 'lspsage-diag-file',
+            cmd = '<CMD>Lspsaga show_buf_diagnostics<CR>'
+        },
+        {
+            desc = 'lspsage-diag-workspace',
+            cmd = '<CMD>Lspsaga show_workspace_diagnostics<CR>'
+        },
+        {
+            desc = 'lspsaga-find-cursor',
+            cmd = '<CMD>Lspsaga finder<CR>'
         }
     }, {})
 
