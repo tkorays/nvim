@@ -213,16 +213,16 @@ return function()
             cmd = '<CMD>OverseerRun<CR>'
         },
         {
-            desc = 'lspsage-outline',
-            cmd = '<CMD>Lspsage outline<CR>'
+            desc = 'lspsaga-outline',
+            cmd = '<CMD>Lspsaga outline<CR>'
         },
         {
-            desc = 'lspsage-incoming-calls',
-            cmd = '<CMD>Lspsage incoming_calls<CR>'
+            desc = 'lspsaga-incoming-calls',
+            cmd = '<CMD>Lspsaga incoming_calls<CR>'
         },
         {
-            desc = 'lspsage-outging-calls',
-            cmd = '<CMD>Lspsage outgoing_calls<CR>'
+            desc = 'lspsaga-outging-calls',
+            cmd = '<CMD>Lspsaga outgoing_calls<CR>'
         },
         {
             desc = 'lspsage-code-action',
