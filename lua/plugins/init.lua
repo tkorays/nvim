@@ -175,10 +175,11 @@ require("lazy").setup({
         dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig',
+            'nvimdev/lspsaga.nvim',
         }
     },
 
-    {'dense-analysis/ale', config = require('plugins.ale')},
+    -- {'dense-analysis/ale', config = require('plugins.ale')},
 
     {'fatih/vim-go', build = ':GoUpdateBinaries', config = require('plugins.vim-go')},
 

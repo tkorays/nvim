@@ -10,6 +10,7 @@ return function()
             'pyright',
         }
     })
+    require('lspsaga').setup({})
 
 
     -- config LSP for C/C++ with `clangd`
@@ -78,6 +79,19 @@ return function()
     vim.diagnostic.config ({
         virtual_text = false
     })
+
+    local signs = {
+        Error = " ",
+        Warning = " ",
+        Warn = " ",
+        Hint = "💡",
+        Information = " ",
+        Info = " "
+    }
+    for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
 
     local opts = { noremap=true, silent=true }
     require("which-key").add({

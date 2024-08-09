@@ -211,6 +211,22 @@ return function()
         {
             desc = 'overseear-run',
             cmd = '<CMD>OverseerRun<CR>'
+        },
+        {
+            desc = 'lspsage-outline',
+            cmd = '<CMD>Lspsage outline<CR>'
+        },
+        {
+            desc = 'lspsage-incoming-calls',
+            cmd = '<CMD>Lspsage incoming_calls<CR>'
+        },
+        {
+            desc = 'lspsage-outging-calls',
+            cmd = '<CMD>Lspsage outgoing_calls<CR>'
+        },
+        {
+            desc = 'lspsage-code-action',
+            cmd = '<CMD>Lspsaga code_action<CR>'
         }
     }, {})
 
