@@ -82,8 +82,8 @@ return function()
 
     local signs = {
         Error = " ",
-        Warning = " ",
-        Warn = " ",
+        Warning = " ",
+        Warn = " ",
         Hint = "💡",
         Information = " ",
         Info = " "
@@ -96,17 +96,27 @@ return function()
     local opts = { noremap=true, silent=true }
     require("which-key").add({
         { "<leader>s", group = "LSP" },
-        { "<leader>sA", function() vim.diagnostic.remove_workspace_folder(opts) end, desc = "remove_workspace_folder" },
-        { "<leader>sD", function() vim.lsp.buf.declaration(opts) end, desc = "goto declaration" },
-        { "<leader>s[", function() vim.diagnostic.goto_prev(opts) end, desc = "prev diagnostic error" },
-        { "<leader>s]", function() vim.diagnostic.goto_next(opts) end, desc = "next diagnostic error" },
+        { "<leader>ss", '<CMD>Lspsaga show_buf_diagnostics<CR>', desc = "show buf diagnostic" },
+        { "<leader>sS", '<CMD>Lspsaga show_workspace_diagnostics<CR>', desc = "show workspace diagnostic" },
+        { "<leader>sj", '<CMD>Lspsaga diagnostic_jump_next<CR>', desc = "next diagnostic" },
+        { "<leader>sk", '<CMD>Lspsaga diagnostic_jump_prev<CR>', desc = "prev diagnostic" },
+
         { "<leader>sa", function() vim.diagnostic.add_workspace_folder(opts) end, desc = "add_workspace_folder" },
+        { "<leader>sA", function() vim.diagnostic.remove_workspace_folder(opts) end, desc = "remove_workspace_folder" },
         { "<leader>sd", function() vim.lsp.buf.definition(opts) end, desc = "goto definition" },
+        { "<leader>sD", function() vim.lsp.buf.declaration(opts) end, desc = "goto declaration" },
+        { "<leader>sp", '<CMD>Lspsaga peek_type_definition<CR>', desc = "peek definition" },
         { "<leader>sf", function() vim.lsp.buf.format() end, desc = "format" },
-        { "<leader>sc", function() vim.lsp.buf.code_action() end, desc = "code action" },
-        { "<leader>sh", function() vim.lsp.buf.hover() end, desc = "hover" },
-        { "<leader>sl", function() vim.diagnostic.setloclist(opts) end, desc = "Open Local List" },
-        { "<leader>so", function() vim.diagnostic.open_float(opts) end, desc = "Open float" },
+        { "<leader>sc", '<CMD>Lspsaga code_action<CR>', desc = "code action" },
+        { "<leader>sh", '<CMD>Lspsaga hover_doc<CR>', desc = "hover" },
+        { "<leader>so", '<CMD>Lspsaga show_line_diagnostics<CR>', desc = "Open float" },
         { "<leader>sr", function() vim.lsp.buf.rename() end, desc = "rename symboles" },
+
+        -- { "<leader>sl", function() vim.diagnostic.setloclist(opts) end, desc = "Open Local List" },
+        -- { "<leader>sj", function() vim.diagnostic.goto_prev(opts) end, desc = "prev diagnostic error" },
+        -- { "<leader>sk", function() vim.diagnostic.goto_next(opts) end, desc = "next diagnostic error" },
+        -- { "<leader>sc", function() vim.lsp.buf.code_action() end, desc = "code action" },
+        -- { "<leader>so", function() vim.diagnostic.open_float(opts) end, desc = "Open float" },
+        -- { "<leader>sh", function() vim.lsp.buf.hover() end, desc = "hover" },
     })
 end

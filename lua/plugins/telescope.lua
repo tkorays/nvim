@@ -48,6 +48,12 @@ return function()
 
     -- key binding
     local ts = require("telescope.builtin")
+
+    -- use ctrl-p to find files
+    require("which-key").add({
+        {"<C-p>", function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, desc="Find files"},
+    })
+
     require("which-key").add({
             -- f = {function() ts.find_files(no_preview()) end, "Find files"},
             { "<leader>f", group = "Telescope keymaps" },

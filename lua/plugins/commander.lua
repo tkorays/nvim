@@ -301,8 +301,7 @@ return function()
     }, {})
 
     require("which-key").add({
-        { "<leader>f", group = "Telescope keymaps" },
-        { "<leader>fa", "<cmd>Telescope commander<CR>", desc = "Commander" },
+        { "<c-c>", "<cmd>Telescope commander<CR>", desc = "Commander" },
     })
 
 end
