@@ -51,7 +51,7 @@ return function()
 
     -- use ctrl-p to find files
     require("which-key").add({
-        {"<C-p>", function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, desc="Find files"},
+        {"<leader>o", function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, desc="Find files"},
     })
 
     require("which-key").add({

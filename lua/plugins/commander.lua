@@ -301,7 +301,7 @@ return function()
     }, {})
 
     require("which-key").add({
-        { "<c-c>", "<cmd>Telescope commander<CR>", desc = "Commander" },
+        { "<leader>q", "<cmd>Telescope commander<CR>", desc = "Quick Commander" },
     })
 
 end
