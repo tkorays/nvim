@@ -1,40 +1,59 @@
 return function()
-    vim.g['ale_cpp_ccls_init_options'] = {
-        cacheDirectory = '.ccls-cache',
-        cacheFormat = 'binary',
-        diagnostics = {
-            onOpen = 0,
-            opChange = 1000,
-        }
-    }
-    vim.g['ale_set_quick_fix'] = true
-    vim.g['ale_open_list'] = true
-    vim.g['ale_lint_on_enter'] = false
-    vim.g['ale_lint_on_text_change'] = false
-    vim.g['ale_lint_on_save'] = false
-    vim.g['ale_cpp_cpplint_executable'] = 'cpplint'
-    vim.g['ale_cpp_cpplint_options'] = '--linelength=120 --filter="-legal/copyright"'
-    vim.g['ale_linters'] = {
-        cpp = {'cpplint'},
-        c = {'cpplint'},
-        python = {'pylint'},
-        rust= {'analyzer'},
+    -- use ALE as a complementary for diagnostic
+    local g = vim.g
+
+    g.ale_set_quick_fix = true
+    g.ale_open_list = false
+    g.ale_lint_on_enter = true
+    g.ale_lint_on_text_change = true
+    g.ale_lint_on_save = true
+    g.ale_cpp_cpplint_executable = 'cpplint'
+    g.ale_cpp_cpplint_options = '--linelength=120 --filter="-legal/copyright"'
+    g.ale_python_flake8_options = '--max-line-length=120'
+
+    g.ale_linters = {
+        -- cpp = {'cpplint'},
+        -- c = {'cpplint'},
+        -- rust= {'analyzer'},
+
+        -- dep: use mason to install flake8 and pyright
+        python = {'flake8', 'pyright'},
+
+        -- dep: use mason to install lua_ls
         lua = {"lua_ls"}
     }
-    vim.g['ale_fixers'] = {
-        cpp = {'clang-format'}
-    }
-    vim.g['ale_completion_enabled'] = false
-    vim.g['ale_cpp_clangd_executable'] = 'clangd'
+    g.ale_fixers = {
+        -- cpp = {'clang-format'}
+        python = {
+            -- common fixers
+            'remove_trailing_lines',
+            'trim_whitespace',
 
-    vim.g.ale_sign_error = '✗'
-    vim.g.ale_sign_warning = '⚠'
+            'add_blank_lines_for_python_control_statements',
+            -- dep: use mason to install autopep8
+            'autopep8',
+            -- dep: python -m pip install autoflake
+            'autoflake',
+            -- dep: python -m pip install autoimport
+            -- autoimport may make imports messy
+            -- 'autoimport',
+            -- dep: python -m pip install reorder-python-imports
+            'reorder-python-imports',
+        }
+    }
+    g.ale_fixers['*'] = {'remove_trailing_lines', 'trim_whitespace'}
+
+    g.ale_completion_enabled = false
+    g.ale_cpp_clangd_executable = 'clangd'
+
+    g.ale_sign_error = '✗'
+    g.ale_sign_warning = '⚠'
+    -- just show a sign and don't show virtual text
+    g.ale_virtualtext_cursor = 'disabled'
     -- vim.api.nvim_set_keymap('n', '<leader>xl', ':ALELint<CR>', {silent = true})
     -- vim.api.nvim_set_keymap('n', '<leader>gd', ':ALEDetail<CR>', {silent = true})
     require("which-key").add({
-        { "<leader>a", group = "ALE" },
-        { "<leader>ad", "<cmd>ALEDetail<cr>", desc = "show details" },
-        { "<leader>af", "<cmd>ALEFix<cr>", desc = "Fix Lint" },
-        { "<leader>al", "<cmd>ALELint<cr>", desc = "Lint" },
+        { "<leader>d", group="diagnostic" },
+        { "<leader>df", "<cmd>ALEFix<cr>", desc = "Fix diagnostic" },
     })
 end

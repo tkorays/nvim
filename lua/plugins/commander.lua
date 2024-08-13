@@ -297,7 +297,37 @@ return function()
             desc = '[LSP]find-reference-saga',
             cmd = '<CMD>Lspsaga finder<CR>',
             cat = 'LSP'
-        }
+        },
+        {
+            desc = '[ALE]enable',
+            cmd = '<CMD>ALEEnable<CR>',
+            cat = 'ALE',
+        },
+        {
+            desc = '[ALE]disable',
+            cmd = '<CMD>ALEDisable<CR>',
+            cat = 'ALE',
+        },
+        {
+            desc = '[ALE]toggle',
+            cmd = '<CMD>ALEToggle<CR>',
+            cat = 'ALE',
+        },
+        {
+            desc = '[ALE]enable-for-buffer',
+            cmd = '<CMD>ALEEnableBuffer<CR>',
+            cat = 'ALE',
+        },
+        {
+            desc = '[ALE]disable-for-buffer',
+            cmd = '<CMD>ALEDisableBuffer<CR>',
+            cat = 'ALE',
+        },
+        {
+            desc = '[ALE]toggle-buffer',
+            cmd = '<CMD>ALEToggleBuffer<CR>',
+            cat = 'ALE',
+        },
     }, {})
 
     require("which-key").add({
