@@ -23,7 +23,8 @@ return function()
         lua = {"lua_ls"}
     }
     g.ale_fixers = {
-        -- cpp = {'clang-format'}
+        cpp = {'clang-format'},
+
         python = {
             -- common fixers
             'remove_trailing_lines',
@@ -32,6 +33,8 @@ return function()
             'add_blank_lines_for_python_control_statements',
             -- dep: use mason to install autopep8
             'autopep8',
+            -- dep: python -m pip install black
+            'black',
             -- dep: python -m pip install autoflake
             'autoflake',
             -- dep: python -m pip install autoimport
