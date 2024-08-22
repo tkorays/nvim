@@ -49,6 +49,19 @@ require("lazy").setup({
         opts = {},
         config = require("plugins.overseer")
     },
+    {
+        -- code runner
+        "michaelb/sniprun",
+        branch = "master",
+        -- mac users should compiple with rust toolchains
+        build = "sh install.sh",
+        config = require('plugins.sniprun'),
+    },
+    {
+        "CRAG666/code_runner.nvim",
+        config = true,
+        config = require('plugins.code_runner'),
+    },
 
     {
         -- ui hooks for vim.ui.select and vim.ui.input
@@ -107,6 +120,17 @@ require("lazy").setup({
             vim.o.timeoutlen = 300
         end,
         opts = {}
+    },
+    {
+        'rmagatti/auto-session',
+        lazy = false,
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+        },
+        opts = {
+            auto_session_suppress_dirs = { '~/', '~/Downloads', '/' },
+            silent_restore = false
+        }
     },
     ----------------------------------------------------------------
 
