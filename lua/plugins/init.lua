@@ -59,7 +59,6 @@ require("lazy").setup({
     },
     {
         "CRAG666/code_runner.nvim",
-        config = true,
         config = require('plugins.code_runner'),
     },
 
@@ -131,6 +130,10 @@ require("lazy").setup({
             auto_session_suppress_dirs = { '~/', '~/Downloads', '/' },
             silent_restore = false
         }
+    },
+    {
+        "folke/zen-mode.nvim",
+        config = require('plugins.zenmode')
     },
     ----------------------------------------------------------------
 
