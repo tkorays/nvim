@@ -13,3 +13,9 @@ in neovim:
 :Mason
 ```
 
+for python dev:
+```bash
+# execute ./install.sh in sniprun dir
+# for sniprun
+pip install klepto
+```
