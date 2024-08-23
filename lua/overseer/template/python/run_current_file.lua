@@ -1,5 +1,5 @@
 return {
-    name = "[python]run current file",
+    name = "python-run",
     builder = function()
         local file = vim.fn.expand("%:p")
         local root_dir = require("lspconfig/util").root_pattern('.git')(file)
