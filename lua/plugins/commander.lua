@@ -98,6 +98,17 @@ return function()
             cmd = '<CMD>CMakeCloseRunner<CR>',
             cat = 'CMake'
         },
+        {
+            desc = '[CMake]copy-target-path',
+            cmd = function()
+                local cmake = require('cmake-tools')
+                if (cmake.is_cmake_project()) then
+                    local bin_path = cmake.get_launch_path(cmake.get_launch_target())..'/'..cmake.get_launch_target()
+                    vim.fn.setreg('+', bin_path)
+                end
+            end,
+            cat = 'CMake'
+        },
 
         {
             desc = '[Git]blame',
@@ -215,6 +226,11 @@ return function()
         {
             desc = '[Telescope]open-recent',
             cmd = function() require('telescope').extensions.recent_files.pick() end,
+            cat = 'Telescope'
+        },
+        {
+            desc = '[Telescope]marks',
+            cmd = '<CMD>Telescope marks<CR>',
             cat = 'Telescope'
         },
         {

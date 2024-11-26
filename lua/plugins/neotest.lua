@@ -27,20 +27,13 @@ return function()
             "build",
             ".git"
         ),
+        debug_adapter = "codelldb",
 
         -- filter directories for search test files
         filter_dir = function(name, rel_path, root)
-            if string.find(rel_path, "third_party") then
-                return false
-            end
-            if string.find(rel_path, "out") then
-                return false
-            end
-            if string.find(rel_path, "build") then
-                return false
-            end
-            if string.find(rel_path, "cmake") then
-                return false
+            local ignore_dirs = {"third_party", "out", "build", "cmake"}
+            for i, v in ipairs(ignore_dirs) do
+                if string.find(rel_path, v) then return false end
             end
             return true
         end,

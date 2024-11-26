@@ -13,4 +13,8 @@ return function()
             'python.run_current_file',
         }
     })
+    require("which-key").add({
+        { "<leader>r", group = "Run Code" },
+        { "<leader>rt", "<cmd>OverseerRun<cr>", desc = "run task" },
+    })
 end

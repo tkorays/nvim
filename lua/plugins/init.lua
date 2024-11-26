@@ -120,19 +120,24 @@ require("lazy").setup({
         end,
         opts = {}
     },
-    {
-        'rmagatti/auto-session',
-        lazy = false,
-        dependencies = {
-            'nvim-telescope/telescope.nvim',
-        },
-        opts = {
-            auto_session_suppress_dirs = { '~/', '~/Downloads', '/' },
-            silent_restore = false
-        }
-    },
+    -- {
+    --     'rmagatti/auto-session',
+    --     lazy = false,
+    --     dependencies = {
+    --         'nvim-telescope/telescope.nvim',
+    --     },
+    --     opts = {
+    --         auto_session_suppress_dirs = { '~/', '~/Downloads', '/' },
+    --         silent_restore = false
+    --     }
+    -- },
     {
         "folke/zen-mode.nvim",
+        opts = {
+            window = {
+                width = 0.85
+            }
+        },
         config = require('plugins.zenmode')
     },
     ----------------------------------------------------------------

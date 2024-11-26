@@ -2,6 +2,7 @@
 local opts = {
     fileencoding = 'utf-8',
     encoding = 'utf-8',
+    exrc = true,
 
     -- nocompatible = true,
     -- backspace = 2,
