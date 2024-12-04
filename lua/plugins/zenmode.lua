@@ -5,7 +5,6 @@ return function()
     --     }
     -- })
     require("which-key").add({
-        { "<leader>x", group = "Execute" },
-        { "<leader>xz", "<cmd>ZenMode<cr>", desc = "enter/leave zen mode" },
+        { "<leader>zz", "<cmd>ZenMode<cr>", desc = "enter/leave zen mode" },
     })
 end

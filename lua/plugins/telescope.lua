@@ -52,6 +52,8 @@ return function()
     -- use ctrl-p to find files
     require("which-key").add({
         {"<leader>o", function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, desc="Find files"},
+        -- set alacritty with option_as_alt = "OnlyLeft" for mac
+        {"<M-o>", function() telescope_pickers.prettyFilesPicker({ picker = 'find_files', options = no_preview() }) end, desc="Find files"},
     })
 
     require("which-key").add({

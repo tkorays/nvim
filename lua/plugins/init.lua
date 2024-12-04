@@ -213,7 +213,7 @@ require("lazy").setup({
 
     {'dense-analysis/ale', config = require('plugins.ale')},
 
-    {'fatih/vim-go', build = ':GoUpdateBinaries', config = require('plugins.vim-go')},
+    -- {'fatih/vim-go', build = ':GoUpdateBinaries', config = require('plugins.vim-go')},
 
     'rust-lang/rust.vim',
 
