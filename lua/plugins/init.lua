@@ -107,6 +107,12 @@ require("lazy").setup({
         "FeiyouG/commander.nvim",
         config = require('plugins.commander')
     },
+    {
+        's1n7ax/nvim-window-picker',
+        config = function()
+            require'window-picker'.setup()
+        end,
+    },
 
     {
         'rcarriga/nvim-notify'
@@ -295,6 +301,24 @@ require("lazy").setup({
     {
         -- use enter to select emoji and use `p` to paste this emoji
         'xiyaowong/telescope-emoji.nvim',
+    },
+    {
+        "uga-rosa/translate.nvim",
+        config = function()
+            require("translate").setup({
+                default = {
+                    -- command = "deepl_pro",
+                },
+                preset = {
+                    output = {
+                        split = {
+                            append = true,
+                        },
+                    },
+                },
+            })
+            vim.api.nvim_set_keymap('v', '<A-t>', '<cmd>Translate ZH<CR>', {})
+        end
     }
 })
 
